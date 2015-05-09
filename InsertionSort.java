@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class InsertionSort extends Sort {
 
@@ -12,7 +13,8 @@ public class InsertionSort extends Sort {
 
 	public static void main(String[] args) {
 		System.out.println("Enter the length of the list you would like to sort: ");
-		int length = Integer.parseInt(args[0]);
+		Scanner sc = new Scanner(System.in);
+		int length = sc.nextInt();
 		int[] arr = new int[length];
 		for(int i=0; i<arr.length; i++) {
 			arr[i] = (int)(Math.random()*(length*2));
