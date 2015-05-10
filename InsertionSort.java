@@ -17,7 +17,7 @@ public class InsertionSort extends Sort {
 		int length = sc.nextInt();
 		int[] arr = new int[length];
 		for(int i=0; i<arr.length; i++) {
-			arr[i] = (int)(Math.random()*(length*2));
+			arr[i] = (int)(Math.random()*(length*3));
 		}
 		System.out.println("Unsorted list: ");
 		System.out.println(Arrays.toString(arr));
