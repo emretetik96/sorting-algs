@@ -18,7 +18,6 @@ public class MergeSort {
 		mergeSort(arr,halfway,end);
 
 		int[] temp = Arrays.copyOfRange(arr,start,halfway);
-		//System.out.println(Arrays.toString(temp));
 		int i = start;
 		int k = 0;
 		int m = halfway;
@@ -42,13 +41,6 @@ public class MergeSort {
 			k++;
 		}
 
-	}
-
-	private static void print(int[] arr, int start, int end) {
-		System.out.println("==============");
-		for (int i=start; i<end; i++) {
-			System.out.println(arr[i]);
-		}
 	}
 
 	public static void main(String[] args) {
