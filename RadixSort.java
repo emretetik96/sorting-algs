@@ -4,19 +4,34 @@ import java.util.Scanner;
 //currently only works for positive integers
 public class RadixSort {
 
-    public static void radixSort(int[] arr) {
+    public static int[] radixSort(int[] arr) {
 	int highestDigitPlace = highestDigitPlace(arr);
 	System.out.println(Arrays.toString(arr));
+	int[] copy;
 	for(int i=0; i<highestDigitPlace; i++) {
 	    int[] frequencies = new int[10];
-	    int[] copy = new int[arr.length];
+	    copy = new int[arr.length];
 	    for (int j=0; j<arr.length; j++){
 		int digitPlace = (arr[j] / (int)Math.pow(10,i)) % 10;
 		frequencies[digitPlace] = frequencies[digitPlace] + 1;
 	    }
 	    System.out.println(Arrays.toString(frequencies));
+	    for (int j=1; j<frequencies.length; j++) {
+		frequencies[j] = frequencies[j] + frequencies[j-1];
+	    }
+	    System.out.println(Arrays.toString(frequencies));
+	    for (int j=arr.length-1; j>=0; j--) {
+		//System.out.println(j);
+		int digitPlace = (arr[j] / (int)Math.pow(10,i)) % 10;
+		//System.out.println(frequencies[digitPlace]);
+		copy[frequencies[digitPlace]-1] = arr[j];
+		frequencies[digitPlace] = frequencies[digitPlace]-1;
+	    }
+	    arr = copy;
+	    System.out.println(Arrays.toString(arr));
 	}
-	
+	//System.out.println(Arrays.toString(arr));
+	return arr;
     }
 
     public static int highestDigitPlace(int[] arr) {
@@ -44,7 +59,7 @@ public class RadixSort {
 	}
 	System.out.println("Unsorted list: ");
 	System.out.println(Arrays.toString(arr));
-	radixSort(arr);
+	arr = radixSort(arr);
 	System.out.println("Sorted list: ");
 	System.out.println(Arrays.toString(arr));
     }
